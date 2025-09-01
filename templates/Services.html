@@ -1,0 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Exploram</title>
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/1icon.jpeg' %}" rel="icon">
+  <link href="{% static 'assets/img/1icon.jpeg' %}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+</head>
+<body class="service-details-page">
+  <header id="header" class="header fixed-top">
+    <div class="container-xl d-flex justify-content-between align-items-center">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/1icon.jpeg' %}" alt="icon">
+        <h1 class="sitename" style="color: rgb(82, 206, 255);">Exploram</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}#hero">Home</a></li>
+          <li><a href="{% url 'home' %}#about">About</a></li>
+          <li><a href="{% url 'home' %}#Sports">Sports</a></li>
+          <li><a href="{% url 'home' %}#team">Team</a></li>
+          <li><a href="{% url 'Services' %}" class="active">Services</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'login' %}">Admin Login</a></li>
+        </ul>
+        <i class="bi bi-list d-xl-none mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+ 
+
+<main class="main">
+
+  <section id="Services" class="Services section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="flip-up">
+      <h2>Services</h2>
+      <div><span>Check Our</span> <span class="description-title">Services</span></div>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="flip-up" data-aos-delay="100">
+      <div class="row">
+        <div class="col-lg-3">
+          <ul class="nav nav-tabs flex-column shadow p-3 rounded bg-light">
+            <li class="nav-item mb-2">
+              <a class="nav-link active show d-flex align-items-center gap-2" data-bs-toggle="tab" href="#Services-1">
+                <i class="bi bi-geo-alt-fill"></i> Indian Trips
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="tab" href="#Services-2">
+                <i class="bi bi-globe"></i> Foreign Trips
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="tab" href="#Services-3">
+                <i class="bi bi-trophy-fill"></i> Sports
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="tab" href="#Services-4">
+                <i class="bi bi-building"></i> Hotel Booking
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="tab" href="#Services-5">
+                <i class="bi bi-person-lines-fill"></i> Tourist Guide
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-9 mt-4 mt-lg-0">
+          <div class="tab-content">
+
+            <!-- Service Tab 1 -->
+            <div class="tab-pane active show" id="Services-1">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>A Journey Through Iconic Lands of India</h3>
+                  <p class="fst-italic">Visiting iconic landmarks like the Eiffel Tower in Paris, the Great Wall of China near Beijing, and the Lotus Temple in New Delhi gives you a mix of romance, history, and spirituality. Each offers a unique cultural experience—whether it’s watching the Eiffel Tower sparkle at night, walking along the ancient stones of the Great Wall, or soaking in the peaceful vibes of the Lotus Temple. These spots are not just photo-worthy but soul-touching in their own way.
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/hero-carousel/taj mahal.jpg' %}" alt="Taj Mahal" class="img-fluid">
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Tab 2 -->
+            <div class="tab-pane" id="Services-2">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Global Escapes: A Touch of History, Beauty & Peace</h3>
+                  <p class="fst-italic">Foreign trips offer a chance to explore new cultures, cuisines, and perspectives beyond borders. Traveling abroad isn’t just about sightseeing—it’s about experiencing the world in ways that expand your mind and soul. Every trip becomes a story, and every destination adds a new chapter to your journey. Exploram must be taken not just for fun, but for growth, learning, and unforgettable memories.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/hero-carousel/lotus temple.jpg' %}" alt="Lotus Temple" class="img-fluid">
+                </div>
+              </div>
+            </div>
+
+           
+            <div class="tab-pane" id="Services-3">
+              
+              <div class="row mb-5">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Fuel Your Passion for Sports</h3>
+                  <p class="fst-italic">Sports play a vital role in shaping character, building discipline, and promoting a healthy lifestyle. Whether it’s the thrill of competition, the spirit of teamwork, or the joy of physical movement, sports bring people together across all boundaries. They teach us resilience, focus, and how to rise after every fall—on and off the field.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/cycling.jpg' %}" alt="Cycling" class="img-fluid rounded shadow">
+                </div>
+              </div>
+              
+            
+
+              <!-- Sports Section 2: Trekking -->
+              <div class="row mb-5">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Reach New Heights with Trekking</h3>
+                  <p class="fst-italic">Trekking is the perfect blend of adventure and serenity, taking you through nature’s untouched beauty. It builds endurance, clears the mind, and strengthens the soul. Every trail brings a new perspective, making it not just a physical activity, but a deeply personal journey.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/hero-carousel/treking.jpg' %}" alt="Trekking" class="img-fluid rounded shadow">
+                </div>
+              </div>
+
+              <!-- Sports Section 3: Surfing -->
+              <div class="row mb-5">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Ride the Waves – Surfing Adventure</h3>
+                  <p class="fst-italic">Surfing is not just a sport—it's a lifestyle that connects you to the rhythm of the ocean. It challenges balance, sharpens instincts, and offers a rush like no other. From beginners to pros, surfing brings joy, thrill, and a deep appreciation for the sea.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/surfing.webp' %}" alt="Surfing" class="img-fluid rounded shadow">
+                </div>
+              </div>
+
+              <!-- Sports Section 4: Rock Climbing -->
+              <div class="row mb-5">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Climb Beyond Limits – Rock Climbing</h3>
+                  <p class="fst-italic">Rock climbing tests not just strength, but also strategy and mental grit. Every climb is a challenge to overcome fear and push boundaries. It’s a sport that builds courage, focus, and a powerful sense of achievement with every successful ascent.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/rockclimbing.jpeg' %}" alt="Rock Climbing" class="img-fluid rounded shadow">
+                </div>
+              </div>
+              
+            </div>
+
+            
+            <div class="tab-pane" id="Services-4">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Your Stay, Our Responsibility</h3>
+                  <p class="fst-italic">Hotel arrangements are professionally managed by our team to ensure a seamless and comfortable experience for every traveler. We kindly request that guests refrain from making independent hotel bookings, as all accommodations are carefully selected and reserved in advance to maintain consistency, convenience, and quality. Trust us to handle the details, so you can focus entirely on enjoying your journey.</p>
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/hotel.jpeg' %}" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="Services-5">
+              <div class="row">
+                <div class="col-lg-8 details order-2 order-lg-1">
+                  <h3>Expert Tourist Guidance at Every Step</h3>
+                  <p class="fst-italic">A dedicated tourist guide will be provided by Exploram to ensure you make the most of your journey. Our experienced guides are well-versed with local culture, history, and hidden gems, offering you an informative and engaging travel experience. With Exploram by your side, you won’t just visit places—you’ll truly understand and connect with them.</p>
+                
+                </div>
+                <div class="col-lg-4 text-center order-1 order-lg-2">
+                  <img src="{% static 'assets/img/tourist guide.jpeg' %}" alt="" class="img-fluid">
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="book-trip" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center fw-bold mb-4 text-primary">Book Your Trip</h2>
+    
+        <div class="mx-auto" style="max-width: 700px;">
+          <form action="{% url 'Services' %}#book-trip" method="post" class="p-4 rounded-4 shadow-sm bg-white border">
+            {% csrf_token %}
+    
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold">Full Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Piyush Kulkarni" required>
+            </div>
+    
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+    
+            <div class="mb-3">
+              <label for="phone" class="form-label fw-semibold">Phone</label>
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91 9876543210" required>
+            </div>
+    
+            <div class="mb-3">
+              <label for="destination" class="form-label fw-semibold">Destination</label>
+              <input type="text" class="form-control" id="destination" name="destination" placeholder="e.g., Manali, Maldives" required>
+            </div>
+    
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="travel_date" class="form-label fw-semibold">Travel Date</label>
+                <input type="text" class="form-control" id="travel_date" name="travel_date" placeholder="e.g., 20 April 2025" required>
+              </div>
+    
+              <div class="col-md-6 mb-3">
+                <label for="people" class="form-label fw-semibold">No. of People</label>
+                <input type="text" class="form-control" id="people" name="people" placeholder="e.g., 2 adults, 1 child" required>
+              </div>
+            </div>
+    
+            <div class="mb-4">
+              <label for="message" class="form-label fw-semibold">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="3" placeholder="Any special requests?"></textarea>
+            </div>
+    
+            <div class="text-center">
+              <button type="submit" class="btn btn-outline-primary px-5 py-2 rounded-pill fw-semibold shadow-sm">
+                Book Now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-light pt-5 pb-4">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- About -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="mb-3">Exploram</h5>
+        <p>Exploram main office, mountain-road</p>
+        <p>India</p>
+        <p><strong>Phone:</strong> +91 8070801112</p>
+        <p><strong>Email:</strong> xyz123@gmail.com</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="col-lg-4 col-md-3">
+        <h5 class="mb-3">Our Services</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Services' %}#book-trip" class="text-light text-decoration-none">Ticket Booking</a></li>
+          <li><a href="{% url 'Services' %}" class="text-light text-decoration-none">Trip Arrangement</a></li>
+          <li><a href="{% url 'Services' %}" class="text-light text-decoration-none">Tourist Guide</a></li>
+          <li><a href="{% url 'Services' %}" class="text-light text-decoration-none">Hotel Booking</a></li>
+        </ul>
+      </div>
+
+      <!-- Useful Information -->
+      <div class="col-lg-4 col-md-12">
+        <h5 class="mb-3">Useful Information</h5>
+        <p>Here at Exploram, we ensure you have the best travel experience. Whether it's for business or leisure, we provide tailored services to make your trips smooth and enjoyable.</p>
+        <l class="list-unstyled">
+          <li><strong>Travel Tips:</strong> Always plan your trip in advance and pack light for convenience!</li>
+          <li><strong>Weather Forecast:</strong> Check the weather before traveling to ensure you pack accordingly.</li>
+          <li><strong>Safety Tips:</strong> Keep your travel documents safe and avoid sharing personal details with strangers.</li>
+        </l>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-4 border-top pt-3">
+      <p class="mb-0">&copy; <span id="year"></span> <strong>Exploram</strong>. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+  <!-- JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Exploram</title>
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/1icon.jpeg' %}" rel="icon">
+  <link href="{% static 'assets/img/1icon.jpeg' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+</head>
+<body class="contact-page">
+  <!-- HEADER -->
+  <header id="header" class="header fixed-top">
+    <div class="container-xl d-flex justify-content-between align-items-center">
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/1icon.jpeg' %}" alt="icon">
+        <h1 class="sitename" style="color: rgb(82, 206, 255);">Exploram</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}#hero">Home</a></li>
+          <li><a href="{% url 'home' %}#about">About</a></li>
+          <li><a href="{% url 'home' %}#Sports">Sports</a></li>
+          <li><a href="{% url 'home' %}#team">Team</a></li>
+          <li><a href="{% url 'Services' %}">Services</a></li>
+          <li><a href="{% url 'contact' %}" class="active" >Contact</a></li>
+          <li><a href="{% url 'login' %}">Admin Login</a></li>
+        </ul>
+        <i class="bi bi-list d-xl-none mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+    <section id="contact" class="contact section py-5" style="background-color: #f7f7f7;">
+      <!-- Section Title -->
+      <div class="container section-title text-center mb-5" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <div>
+          <span>Need Assistance?</span> <span class="description-title">We're Here to Help</span>
+        </div>
+      </div><!-- End Section Title -->
+    
+      <!-- Google Maps -->
+      <div class="mb-5">
+        <iframe style="width: 100%; height: 400px;" 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" 
+          frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <!-- End Google Maps -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+    
+          <!-- Contact Information -->
+          <div class="col-lg-12">
+            <div class="bg-white p-4 rounded shadow-sm" data-aos="fade" data-aos-delay="200">
+              <div class="contact-info-item mb-4">
+                <i class="bi bi-geo-alt h4 text-primary me-3"></i>
+                <h5 class="d-inline-block">Our Address</h5>
+                <p>Exploram Main Office, Mountain Road, India</p>
+              </div>
+              <div class="contact-info-item mb-4">
+                <i class="bi bi-telephone h4 text-primary me-3"></i>
+                <h5 class="d-inline-block">Call Us</h5>
+                <p>+91 80708 01112</p>
+              </div>
+              <div class="contact-info-item mb-4">
+                <i class="bi bi-envelope h4 text-primary me-3"></i>
+                <h5 class="d-inline-block">Email Us</h5>
+                <p>xyz123@gmail.com</p>
+                <p>contact@gmail.com</p>
+              </div>
+              <div class="contact-info-item mb-4">
+                <i class="bi bi-clock h4 text-primary me-3"></i>
+                <h5 class="d-inline-block">Working Hours</h5>
+                <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+          </div><!-- End Contact Info -->
+          <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea name="message" class="form-control" rows="6" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              {% if success %}
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              {% endif %}
+            </div>
+          </form>
+          
+        
+      </section>
+  </main>
+
+ 
+ <!-- Footer -->
+ <footer class="footer bg-dark text-light pt-5 pb-4">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- About -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="mb-3">Exploram</h5>
+        <p>Exploram main office, mountain-road</p>
+        <p>India</p>
+        <p><strong>Phone:</strong> +91 8070801112</p>
+        <p><strong>Email:</strong> xyz123@gmail.com</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="col-lg-4 col-md-3">
+        <h5 class="mb-3">Our Services</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Services' %}#book-trip" class="text-light text-decoration-none">Ticket Booking</a></li>
+          <li><a href="{% url 'Services' %}" class="text-light text-decoration-none">Trip Arrangement</a></li>
+          <li><a href="{% url 'Services' %}" class="text-light text-decoration-none">Tourist Guide</a></li>
+          <li><a href="{% url 'Services' %}" class="text-light text-decoration-none">Hotel Booking</a></li>
+        </ul>
+      </div>
+
+      <!-- Useful Information -->
+      <div class="col-lg-4 col-md-12">
+        <h5 class="mb-3">Useful Information</h5>
+        <p>Here at Exploram, we ensure you have the best travel experience. Whether it's for business or leisure, we provide tailored services to make your trips smooth and enjoyable.</p>
+        <l class="list-unstyled">
+          <li><strong>Travel Tips:</strong> Always plan your trip in advance and pack light for convenience!</li>
+          <li><strong>Weather Forecast:</strong> Check the weather before traveling to ensure you pack accordingly.</li>
+          <li><strong>Safety Tips:</strong> Keep your travel documents safe and avoid sharing personal details with strangers.</li>
+        </l>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-4 border-top pt-3">
+      <p class="mb-0">&copy; <span id="year"></span> <strong>Exploram</strong>. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+  <!-- JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>
