@@ -33,7 +33,46 @@
           <li><a href="{% url 'home' %}#team">Team</a></li>
           <li><a href="{% url 'Services' %}" class="active">Services</a></li>
           <li><a href="{% url 'contact' %}">Contact</a></li>
-          <li><a href="{% url 'login' %}">Admin Login</a></li>
+          {% if user.is_authenticated %}
+
+<div class="dropdown">
+  <button class="btn btn-exploram dropdown-toggle" type="button" data-bs-toggle="dropdown">
+    {{ user.username }}
+  </button>
+
+  <ul class="dropdown-menu">
+    {% if user.is_staff %}
+      <li>
+        <a class="dropdown-item" href="{% url 'trips:admin_dashboard' %}">
+          Admin Dashboard
+        </a>
+      </li>
+    {% else %}
+      <li>
+        <a class="dropdown-item" href="{% url 'accounts:dashboard' %}">
+          Dashboard
+        </a>
+      </li>
+    {% endif %}
+
+    <li><hr class="dropdown-divider"></li>
+
+    <li>
+      <a class="dropdown-item text-danger" href="{% url 'accounts:logout' %}">
+        Logout
+      </a>
+    </li>
+  </ul>
+</div>
+
+{% else %}
+
+<a href="{% url 'accounts:login' %}" class="btn btn-exploram">
+  Login
+</a>
+
+{% endif %}
+
         </ul>
         <i class="bi bi-list d-xl-none mobile-nav-toggle"></i>
       </nav>

@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Exploram{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/" style="color:#52ceff;">
+            <img src="{% static 'assets/img/1icon.jpeg' %}" alt="Exploram" width="32" height="32">
+            <span>Exploram</span>
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+
+                <!-- Common Links -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Services' %}">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <!-- Explore Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Explore
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="/trips/">Trips</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/ai-planner/">AI Trip Planner</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- ADMIN DROPDOWN (NEW) -->
+                {% if user.is_staff %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-semibold text-warning"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown">
+                        Admin
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="/trips/admin-panel/">
+                                Admin Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/trips/admin-panel/trips/">
+                                Manage Trips
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                <!-- Profile Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center gap-1"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown">
+                        <img src="{% static 'assets/img/user.png' %}" alt="Profile" width="28" height="28">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="/accounts/dashboard/">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {% else %}
+
+                <!-- Login -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= PAGE CONTENT ================= -->
+<div class="container my-5">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <small>© 2026 Exploram. All rights reserved.</small>
+</footer>
+
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

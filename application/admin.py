@@ -18,4 +18,8 @@ admin.site.register(Contact, ContactAdmin)
 from .models import TripBooking  # replace with your model name
 
 admin.site.register(TripBooking)
+class TripBookingAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'destination', 'approved')
+    list_editable = ('approved',)
+
 

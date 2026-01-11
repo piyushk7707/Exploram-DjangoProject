@@ -1,72 +1,103 @@
-from django.shortcuts import render, redirect # type: ignore
-from application.models import*
-from .models import Contact
-from django.contrib import messages # type: ignore
-from .forms import TripBookingForm
-from django.contrib.auth import authenticate, login
-from .forms import ContactForm
-from .models import ContactSubmission
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import TripBookingForm, ContactForm
 from .models import Contact, TripBooking
 
-# Create your views here.
+# HOME PAGE
 def home(request):
-    return render(request,'index.html')
+    return render(request, 'index.html')
 
 
-
-
+# CONTACT PAGE
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'contact.html', {'form': ContactForm(), 'success': True})
+            return render(
+                request,
+                'contact.html',
+                {'form': ContactForm(), 'success': True}
+            )
     else:
         form = ContactForm()
+
     return render(request, 'contact.html', {'form': form})
 
 
-
+# SERVICES / TRIP BOOKING PAGE
 def Services(request):
     if request.method == 'POST':
         form = TripBookingForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your trip has been booked successfully!')
-            return redirect('/Services/#book-trip')  # Redirect after POST
+            return redirect('/Services/#book-trip')
     else:
         form = TripBookingForm()
-    
+
     return render(request, 'Services.html', {'form': form})
 
-def user_login(request):
+from openai import OpenAI, RateLimitError
+from django.conf import settings
+
+client = OpenAI(api_key=settings.OPENAI_API_KEY)
+
+
+def mock_ai_trip(destination, budget, days):
+    return (
+        f"Trip Plan for {destination} ({days} days)\n\n"
+        "- Stay in budget hotels or hostels\n"
+        "- Use public transport\n"
+        "- Visit 2 major attractions per day\n"
+        "- Allocate daily food budget carefully\n\n"
+        "Note: This is a demo AI response."
+    )
+
+
+def ai_planner(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        destination = request.POST.get('destination')
+        budget = request.POST.get('budget')
+        days = request.POST.get('days')
 
-        if user is not None:
-            login(request, user)
-            return redirect('dashboard')
+        # 🔁 AI TOGGLE
+        if settings.AI_ON:
+            try:
+                prompt = f"""
+                Create a detailed trip plan.
+                Destination: {destination}
+                Budget: {budget} INR
+                Duration: {days} days
+                """
+
+                response = client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[
+                        {"role": "system", "content": "You are a travel planner."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    max_tokens=400
+                )
+
+                suggestion = response.choices[0].message.content
+
+            except RateLimitError:
+                suggestion = mock_ai_trip(destination, budget, days)
+
         else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-    return render(request, 'login.html')
+            # ❌ REAL AI OFF → DEMO MODE
+            suggestion = mock_ai_trip(destination, budget, days)
 
-@login_required
-def dashboard(request):
-    submissions = ContactSubmission.objects.all()
-    return render(request, 'dashboard.html', {'submissions': submissions})
+        return render(
+            request,
+            'ai_result.html',
+            {
+                'destination': destination,
+                'budget': budget,
+                'days': days,
+                'suggestion': suggestion
+            }
+        )
 
-
-def dashboard(request):
-    # Fetch all entries from database
-    contact_submissions = Contact.objects.all()
-    trip_bookings = TripBooking.objects.all()
-
-    context = {
-        'contact_submissions': contact_submissions,
-        'trip_bookings': trip_bookings,
-    }
-    return render(request, 'dashboard.html', context)
-
+    return render(request, 'ai_planner.html')

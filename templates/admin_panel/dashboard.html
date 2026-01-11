@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel | Exploram{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+  <h2 class="fw-bold mb-2 text-primary">Admin Panel</h2>
+  <p class="text-muted mb-5">
+    Manage all website content from here
+  </p>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card-body text-center">
+          <h5 class="fw-semibold mb-3">Trips</h5>
+          <p class="text-muted">Add, edit or delete trips</p>
+          <a href="{% url 'trips:admin_trips' %}"
+             class="btn btn-primary rounded-pill">
+            Manage Trips
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card-body text-center">
+          <h5 class="fw-semibold mb-3">Bookings</h5>
+          <p class="text-muted">View user bookings</p>
+          <button class="btn btn-outline-secondary rounded-pill" disabled>
+            Coming Soon
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

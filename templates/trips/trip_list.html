@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Trips | Exploram{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Available Trips</h2>
+
+{% if trips %}
+<div class="row">
+    {% for trip in trips %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ trip.title }}</h5>
+                <p class="card-text">
+                    <strong>Destination:</strong> {{ trip.destination }}<br>
+                    <strong>Duration:</strong> {{ trip.duration_days }} days<br>
+                    <strong>Price:</strong> ₹{{ trip.price }}
+                </p>
+                <a href="/trips/{{ trip.id }}/" class="btn btn-primary w-100">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-center">No trips available.</p>
+{% endif %}
+{% endblock %}

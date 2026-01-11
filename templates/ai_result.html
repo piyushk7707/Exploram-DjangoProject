@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Trip Plan Result | Exploram{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Your AI Trip Plan</h2>
+
+<div class="card p-4 shadow-sm">
+    <p><strong>Destination:</strong> {{ destination }}</p>
+    <p><strong>Budget:</strong> ₹{{ budget }}</p>
+    <p><strong>Days:</strong> {{ days }}</p>
+
+    <hr>
+
+    <h5>AI Suggestion</h5>
+    <p style="white-space: pre-line;">{{ suggestion }}</p>
+
+
+    <a href="/ai-planner/" class="btn btn-outline-primary mt-3">
+        Plan Another Trip
+    </a>
+</div>
+{% endblock %}

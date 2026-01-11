@@ -1,39 +1,95 @@
-<!-- templates/login.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Admin Login</title>
+  <meta charset="UTF-8">
+  <title>Login | Exploram</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    body { background-color: #f8f9fa; }
-    .login-box {
-      max-width: 400px;
-      margin: 80px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    body {
+      background: linear-gradient(135deg, #eaf8ff, #f7fcff);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .auth-box {
+      border-radius: 18px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+    }
+    .brand {
+      color: #52ceff;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .btn-exploram {
+      background-color: #52ceff;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+    }
+    .btn-exploram:hover {
+      background-color: #3bbbe6;
+    }
+    .form-control:focus {
+      border-color: #52ceff;
+      box-shadow: 0 0 0 0.2rem rgba(82, 206, 255, 0.25);
     }
   </style>
 </head>
+
 <body>
-  <div class="login-box">
-    <h3 class="text-center mb-4">Admin Login</h3>
-    <form method="POST">
-      {% csrf_token %}
-      <div class="mb-3">
-        <label>Username</label>
-        <input type="text" name="username" class="form-control" required>
+
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="min-height:100vh;">
+    <div class="col-md-5">
+
+      <div class="card auth-box border-0 p-4">
+        <div class="text-center mb-4">
+          <img src="/static/assets/img/1icon.jpeg" width="60" class="mb-2">
+          <h3 class="brand">Exploram</h3>
+          <p class="text-muted">Login to your account</p>
+        </div>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" required>
+          </div>
+
+          <button class="btn btn-exploram w-100 rounded-pill mt-2">
+            Login
+          </button>
+        </form>
+
+        <div class="text-center mt-3">
+          <small class="text-muted">
+            New to Exploram?
+            <a href="{% url 'accounts:signup' %}" style="color:#52ceff;">Create account</a>
+          </small>
+        </div>
+
+        <div class="text-center mt-2">
+          <a href="{% url 'accounts:password_reset' %}" class="text-muted small">
+            Forgot password?
+          </a>
+        </div>
       </div>
-      <div class="mb-3">
-        <label>Password</label>
-        <input type="password" name="password" class="form-control" required>
-      </div>
-      {% if error %}
-      <div class="alert alert-danger">{{ error }}</div>
-      {% endif %}
-      <button type="submit" class="btn btn-primary w-100">Login</button>
-    </form>
+
+    </div>
   </div>
+</div>
+
 </body>
 </html>

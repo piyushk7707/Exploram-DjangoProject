@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ trip.title }} | Exploram{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title mb-3">{{ trip.title }}</h3>
+
+                <p class="card-text">
+                    <strong>Destination:</strong> {{ trip.destination }}<br>
+                    <strong>Duration:</strong> {{ trip.duration_days }} days<br>
+                    <strong>Price:</strong> ₹{{ trip.price }}
+                </p>
+
+                <hr>
+
+                <p>{{ trip.description }}</p>
+
+                <div class="d-flex gap-2 mt-4">
+                    {% if user.is_authenticated %}
+                        <a href="/trips/{{ trip.id }}/book/" class="btn btn-success">
+                            Book Now
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-primary">
+                            Login to Book
+                        </a>
+                    {% endif %}
+
+                    <a href="/trips/" class="btn btn-outline-secondary">
+                        Back to Trips
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
