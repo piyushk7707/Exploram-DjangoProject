@@ -101,3 +101,7 @@ def ai_planner(request):
         )
 
     return render(request, 'ai_planner.html')
+def get_openai_client():
+    if not settings.OPENAI_API_KEY:
+        return None
+    return OpenAI(api_key=settings.OPENAI_API_KEY)
